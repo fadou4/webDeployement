@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction des déchets</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/styles/predict.css')}}">
+    <script src="{{url_for('static', filename='/scripts/predict.js')}}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <img src="{{url_for('static', filename='/images/logo.png')}}" style="width: 80px; height: 80px;" alt="logo">
+    <div id="container">
+        <p id="upload">Télechargez le produit </p>
+        <form action="/predict/submit" method="post" enctype="multipart/form-data">
+            <div id="cloud_container">
+                
+                <label id="choose" for="image">
+                    {% if prediction %}
+                <img id="cloud" style="height: 100px; width: 100px;"
+                    src="{{img_path}}" alt="trash">
+                {% else %}
+                <img id="cloud" style="height: 100px; width: 100px;"
+                    src="{{url_for('static', filename='/images/cloud.png')}}" alt="cloud">
+                {% endif %}
+               choisissez une image</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <button>Predict</button>
+        </form>
+
+        {% if prediction %}
+        <h2> Votre produit c'est du  : <i> {{prediction}} </i></h2>
+        {% endif %}
+    </div>
+</body>
+
+</html>

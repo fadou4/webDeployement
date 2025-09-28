@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='/styles/start.css')}}">
+</head>
+<body>
+    <img src="{{url_for('static', filename='/images/logo.png')}}" style="width: 80px; height: 80px;" alt="logo">
+    <div id="container"></div>
+        <p id="title">Nouvelle technologie pour la gestion des déchets<br> Detection des déchets<br>
+            <span id="sub_title">Identifiez le produit que vous allez rejeter </span><br>
+        </p>
+        <form style="width:100%; display:flex; justify-content: center;" action="/predict" method="get">
+            <button>Commencez</button>
+        </form>
+    </div>
+</body>
+</html>
